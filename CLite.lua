@@ -1,3 +1,5 @@
+-----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
 	To enable or disable logging in certain zones place either a true or false next to the zone.  If you want to add a new zone
 	to the list just write it exactly like the others already there and make sure you spell it like it's called in the game.
@@ -8,16 +10,17 @@ local zones =
 	["Trial of the Crusader"] = true,
 	["Trial of the Champion"] = true,
 	["Ulduar"] = true,
-	["Obsidian Sanctum"] = true,
-	["Onyxia's Lair"] = true,
-	["Onyxia's Lair"] = true,
-	["Onyxia's Lair"] = true,
-	["Onyxia's Lair"] = true,
-	["Onyxia's Lair"] = true,
-	["The Stockade"] = true
+	["The Obsidian Sanctum"] = true,
+	["Naxxramas"] = true,
+	["The Eye of Eternity"] = true,
+	["Vault of Archavon"] = true,
+	["Onyxia's Lair"] = true
 }
 --Set this to true if you want to log in 10 man instances, other wise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = false;
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 --This function checks the current zone agaist the table of zones and decides whether or not to enable or disable
@@ -32,7 +35,6 @@ local function zoneChangedUpdate()
 		return;
 	end
 	
-		
 	local CurrentZoneText = GetRealZoneText();
 	
 	for key,value in pairs(zones) do
