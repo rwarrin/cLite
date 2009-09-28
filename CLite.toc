@@ -1,0 +1,7 @@
+## Interface: 30200
+## Title: CLite
+## Notes: Combat Logger Lite.  Automatically enables combatlogging.
+## Author: Astiroth
+## Version: 0.1
+
+CLite.lua
