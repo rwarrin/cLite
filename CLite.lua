@@ -6,6 +6,7 @@
 ]]
 local zones = 
 {
+	--10 and 25 man Raid Instances
 	["Trial of the Grand Crusader"] = true,
 	["Trial of the Crusader"] = true,
 	["Trial of the Champion"] = true,
@@ -14,10 +15,22 @@ local zones =
 	["Naxxramas"] = true,
 	["The Eye of Eternity"] = true,
 	["Vault of Archavon"] = true,
-	["Onyxia's Lair"] = true
+	["Onyxia's Lair"] = true,
+	
+	--Heroic Instances
+	["The Old Kingdom"] = false,
+	["Drak'Tharon Keep"] = false,
+	["Gundrak"] = false,
+	["The Nexus"] = false,
+	["The Oculus"] = false,
+	["The Violet Hold"] = false,
+	["Halls of Lightning"] = false,
+	["Halls of Stone"] = false,
+	["Utegarde Keep"] = false,
+	["Utegarde Pinnacle"] = false,
 }
---Set this to true if you want to log in 10 man instances, other wise set it to false if you only want to log 25 man instances.
-local EnableTenManLogging = false;
+--Set this to true if you want to log in 10 man instances too, other wise set it to false if you only want to log 25 man instances.
+local EnableTenManLogging = true;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
