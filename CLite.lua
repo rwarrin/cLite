@@ -26,13 +26,13 @@ local zones =
 	["The Violet Hold"] = false,
 	["Halls of Lightning"] = false,
 	["Halls of Stone"] = false,
-	["Utegarde Keep"] = false,
-	["Utegarde Pinnacle"] = false,
+	["Utgarde Keep"] = false,
+	["Utgarde Pinnacle"] = false,
 }
 --Set this to true if you want to log in 10 man instances too, other wise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
 
 
 
@@ -66,10 +66,10 @@ local function zoneChangedUpdate()
 	else --LoggingStatus == false then
 		if(DisplayStopMessage == true) then
 			DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Stopped", 1.0, 0.0, 0.0);
-			LoggingCombat();
+			LoggingCombat(0);
 			DisplayStopMessage = false;
 		else
-			LoggingCombat();
+			LoggingCombat(0);
 		end
 	end
 	
