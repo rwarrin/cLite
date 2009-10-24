@@ -9,7 +9,6 @@ local zones =
 	--10 and 25 man Raid Instances
 	["Trial of the Grand Crusader"] = true,
 	["Trial of the Crusader"] = true,
-	["Trial of the Champion"] = true,
 	["Ulduar"] = true,
 	["The Obsidian Sanctum"] = true,
 	["Naxxramas"] = true,
@@ -28,10 +27,10 @@ local zones =
 	["Halls of Stone"] = false,
 	["Utgarde Keep"] = false,
 	["Utgarde Pinnacle"] = false,
+	["Trial of the Champion"] = false,
 }
 --Set this to true if you want to log in 10 man instances too, other wise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
-local EnableFiveManLogging = false;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
 
@@ -44,10 +43,6 @@ local DisplayStopMessage = true;
 	
 local function zoneChangedUpdate()
 	local RaidSize = GetNumRaidMembers();
-	
-	if(EnableFiveManLogging == false and RaidSize <= 5) then
-		return;
-	end
 	
 	if( EnableTenManLogging == false and RaidSize <= 15) then
 		return;
