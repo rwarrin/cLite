@@ -31,6 +31,7 @@ local zones =
 }
 --Set this to true if you want to log in 10 man instances too, other wise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
+local EnableFiveManLogging = false;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
 
@@ -43,6 +44,10 @@ local DisplayStopMessage = true;
 	
 local function zoneChangedUpdate()
 	local RaidSize = GetNumRaidMembers();
+	
+	if(EnableFiveManLogging == false and RaidSize <= 5) then
+		return;
+	end
 	
 	if( EnableTenManLogging == false and RaidSize <= 15) then
 		return;
@@ -72,7 +77,6 @@ local function zoneChangedUpdate()
 			LoggingCombat(0);
 		end
 	end
-	
 end
 
 --OnEvent script handler.

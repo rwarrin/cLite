@@ -2,6 +2,6 @@
 ## Title: CLite
 ## Notes: Combat Logger Lite.  Automatically enables combatlogging.
 ## Author: Astiroth and Trapartist
-## Version: 0.1
+## Version: 0.3 (alpha)
 
 CLite.lua
