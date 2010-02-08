@@ -16,22 +16,6 @@ local zones =
 	["Vault of Archavon"] = true,
 	["Onyxia's Lair"] = true,
 	["Icecrown Citadel"] = true,
-	
-	--Heroic Instances
-	["Trial of the Champion"] = false,
-	["The Old Kingdom"] = false,
-	["Drak'Tharon Keep"] = false,
-	["Gundrak"] = false,
-	["The Nexus"] = false,
-	["The Oculus"] = false,
-	["The Violet Hold"] = false,
-	["Halls of Lightning"] = false,
-	["Halls of Stone"] = false,
-	["Utgarde Keep"] = false,
-	["Utgarde Pinnacle"] = false,
-	["The Forge of Souls"] = false,
-	["Pit of Saron"] = false,
-	["Halls of Reflection"] = false,
 }
 --Set this to true if you want to log in 10 man instances too, other wise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
