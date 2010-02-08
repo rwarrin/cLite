@@ -68,11 +68,9 @@ local function zoneChangedUpdate()
 	else --if (LoggingStatus == false) then
 		if (DisplayStopMessage == true) then
 			DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Stopped", 1.0, 0.0, 0.0);
-			LoggingCombat(0);
 			DisplayStopMessage = false;
-		else
-			LoggingCombat(0);
 		end
+		LoggingCombat(0);
 	end
 end
 
