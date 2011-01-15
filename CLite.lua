@@ -5,23 +5,28 @@
 ]]
 local zones = 
 {
-	--10 and 25 man Raid Instances
-	["Trial of the Grand Crusader"] = true,
-	["Trial of the Crusader"] = true,
-	["Ulduar"] = true,
-	["The Obsidian Sanctum"] = true,
-	["Naxxramas"] = true,
-	["The Eye of Eternity"] = true,
-	["Vault of Archavon"] = true,
-	["Onyxia's Lair"] = true,
-	["Icecrown Citadel"] = true,
+	--  10 and 25 man Raid Instances
+	
+	--  Wrath of the Lich King
+	["Trial of the Grand Crusader"] = false,
+	["Trial of the Crusader"] = false,
+	["Ulduar"] = false,
+	["The Obsidian Sanctum"] = false,
+	["Naxxramas"] = false,
+	["The Eye of Eternity"] = false,
+	["Vault of Archavon"] = false,
+	["Onyxia's Lair"] = false,
+	["Icecrown Citadel"] = false,
+	["The Ruby Sanctum"] = false,
+	
+	--  Cataclysm
 }
---Set this to true if you want to log in 10 man instances too, otherwise set it to false if you only want to log 25 man instances.
+--  Set this to true if you want to log in 10 man instances too, otherwise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
 -----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
 
---This function checks the current zone agaist the table of zones and decides whether or not to enable or disable
---combat logging.
+--  This function checks the current zone agaist the table of zones and decides whether or not to enable or disable
+--  combat logging.
 local LoggingStatus = false;
 local DisplayStopMessage = true;
 	
@@ -47,7 +52,7 @@ local function zoneChangedUpdate()
 		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Started", 1.0, 0.0, 0.0);
 		LoggingCombat(1);
 		DisplayStopMessage = true;
-	else --if (LoggingStatus == false) then
+	else --  if (LoggingStatus == false) then
 		if (DisplayStopMessage == true) then
 			DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Stopped", 1.0, 0.0, 0.0);
 			DisplayStopMessage = false;
@@ -56,14 +61,14 @@ local function zoneChangedUpdate()
 	end
 end
 
---OnEvent script handler.
+--  OnEvent script handler.
 local function onEvent(self, event)
 	if (event == "ZONE_CHANGED_NEW_AREA") then
 		zoneChangedUpdate();
 	end
 end
 
--- Create The Frame and Register Events
+--  Create The Frame and Register Events
 local CLite = CreateFrame("FRAME", "CLite_Frame", UIParent);
 DEFAULT_CHAT_FRAME:AddMessage("CLite Loaded");
 
