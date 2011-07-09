@@ -20,6 +20,7 @@ local zones =
 	["The Ruby Sanctum"] = false,
 	
 	--  Cataclysm
+	["Firelands"] = true,
 	["Blackwing Descent"] = true,
 	["The Bastion of Twilight"] = true,
 	["Throne of the Four Winds"] = true,
