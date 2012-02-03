@@ -25,6 +25,7 @@ local zones =
 	["The Bastion of Twilight"] = true,
 	["Throne of the Four Winds"] = true,
 	["Baradin Hold"] = true,
+    ["Dragon Soul"] = true,
 }
 --  Set this to true if you want to log in 10 man instances too, otherwise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
