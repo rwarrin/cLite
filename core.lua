@@ -1,12 +1,15 @@
------------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
+--------------------------------------  CONFIG  --------------------------------------
 --
---	To enable or disable logging in certain zones place either a true or false next to the zone.  If you want to add a new zone
---	to the list just write it exactly like the others already there and make sure you spell it like it's called in the game.
+-- To enable logging in a zone change the zone key value to true.
+-- To desable loggin in a zoen change the zone key value to false.
 --
+-- To add a new zone to the list use the format below:
+-- ["NEW ZONE NAME"] = true,
+-- To get the zone name run print(GetRealZoneText()); in game.
+
 local zones = 
 {
-	--  10 and 25 man Raid Instances
-	--  Cataclysm
+	-- Cataclysm Raids
 	["Firelands"] = true,
 	["Blackwing Descent"] = true,
 	["The Bastion of Twilight"] = true,
@@ -14,10 +17,10 @@ local zones =
 	["Baradin Hold"] = true,
     ["Dragon Soul"] = true,
 }
---  Set this to true if you want to log in 10 man instances too, otherwise set it to false if you only want to log 25 man instances.
+-- Set this to true to enable combat loggin in 10 player raids
 local EnableTenManLogging = true;
 
------------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
+--------------------------------------  CONFIG  --------------------------------------
 
 --  This function checks the current zone agaist the table of zones and decides whether or not to enable or disable
 --  combat logging.
