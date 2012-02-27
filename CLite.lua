@@ -16,6 +16,7 @@ local zones =
 }
 --  Set this to true if you want to log in 10 man instances too, otherwise set it to false if you only want to log 25 man instances.
 local EnableTenManLogging = true;
+
 -----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
 
 --  This function checks the current zone agaist the table of zones and decides whether or not to enable or disable
