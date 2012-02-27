@@ -1,24 +1,11 @@
 -----------------------------------------------------------------------------------CONFIG---------------------------------------------------------------------------------------
---[[
-	To enable or disable logging in certain zones place either a true or false next to the zone.  If you want to add a new zone
-	to the list just write it exactly like the others already there and make sure you spell it like it's called in the game.
-]]
+--
+--	To enable or disable logging in certain zones place either a true or false next to the zone.  If you want to add a new zone
+--	to the list just write it exactly like the others already there and make sure you spell it like it's called in the game.
+--
 local zones = 
 {
 	--  10 and 25 man Raid Instances
-	
-	--  Wrath of the Lich King
-	["Trial of the Grand Crusader"] = false,
-	["Trial of the Crusader"] = false,
-	["Ulduar"] = false,
-	["The Obsidian Sanctum"] = false,
-	["Naxxramas"] = false,
-	["The Eye of Eternity"] = false,
-	["Vault of Archavon"] = false,
-	["Onyxia's Lair"] = false,
-	["Icecrown Citadel"] = false,
-	["The Ruby Sanctum"] = false,
-	
 	--  Cataclysm
 	["Firelands"] = true,
 	["Blackwing Descent"] = true,
