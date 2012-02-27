@@ -69,8 +69,10 @@ end
 
 --  OnEvent script handler.
 local function onEvent(self, event)
-	if (event == "ZONE_CHANGED_NEW_AREA") then
-		zoneChangedUpdate();
+	if(enabled) then
+		if (event == "ZONE_CHANGED_NEW_AREA") then
+			zoneChangedUpdate();
+		end
 	end
 end
 
@@ -82,3 +84,22 @@ CLite:SetScript("OnEvent", onEvent);
 CLite:RegisterEvent("ZONE_CHANGED_NEW_AREA", "zoneChangedUpdate");
 LoggingCombat();
 zoneChangedUpdate();
+
+-- Allows the addon to be toggled on and off in game.
+local enabled = true;
+
+-- Toggles logging on/off
+function toggleLogging()
+	if(enabled) then
+		enabled = false;
+		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat logging disabled.", 1.0, 0.0, 0.0);
+	else
+		enabled = true;
+		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat logging enabled.", 1.0, 0.0, 0.0);
+	end
+	zoneChangedUpdate();
+end
+
+-- Slash command to toggle logging
+SLASH_CLITETOGGLE1 = "/cl";
+SlashCmdList["CLITETOGGLE"] = toggleLogging;
