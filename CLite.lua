@@ -69,8 +69,8 @@ end
 
 --  OnEvent script handler.
 local function onEvent(self, event)
-	if(enabled) then
-		if (event == "ZONE_CHANGED_NEW_AREA") then
+	if (event == "ZONE_CHANGED_NEW_AREA") then
+		if(enabled) then
 			zoneChangedUpdate();
 		end
 	end
