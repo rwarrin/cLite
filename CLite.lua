@@ -42,13 +42,13 @@ local function zoneChangedUpdate()
 		end
 	end
 	
-	if(LoggingStatus == true) then
-		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Started", 1.0, 0.0, 0.0);
+	if(LoggingStatus == true and enabled == true) then
+		DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging is running.", 0.9, 0.4, 0.3);
 		LoggingCombat(1);
 		DisplayStopMessage = true;
 	else --  if (LoggingStatus == false) then
 		if (DisplayStopMessage == true) then
-			DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat Logging Stopped", 1.0, 0.0, 0.0);
+			DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging is stopped.", 0.9, 0.4, 0.3);
 			DisplayStopMessage = false;
 		end
 		LoggingCombat(0);
@@ -61,29 +61,33 @@ local function onEvent(self, event)
 		if(enabled) then
 			zoneChangedUpdate();
 		end
+	elseif (event == "ADDON_LOADED") then
+		if(enabled == nil) then
+			enabled = true;
+		end
+	elseif(event == "PLAYER_LOGIN") then
+		LoggingCombat();
+		zoneChangedUpdate();
 	end
 end
 
 --  Create The Frame and Register Events
 local CLite = CreateFrame("FRAME", "CLite_Frame", UIParent);
-DEFAULT_CHAT_FRAME:AddMessage("CLite Loaded");
 
 CLite:SetScript("OnEvent", onEvent);
 CLite:RegisterEvent("ZONE_CHANGED_NEW_AREA", "zoneChangedUpdate");
-LoggingCombat();
-zoneChangedUpdate();
+CLite:RegisterEvent("ADDON_LOADED");
+CLite:RegisterEvent("PLAYER_LOGIN");
 
 -- Allows the addon to be toggled on and off in game.
-local enabled = true;
-
 -- Toggles logging on/off
 function toggleLogging()
-	if(enabled) then
+	if(enabled == true) then
 		enabled = false;
-		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat logging disabled.", 1.0, 0.0, 0.0);
+		DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging disabled.", 1.0, 0.0, 0.0);
 	else
 		enabled = true;
-		DEFAULT_CHAT_FRAME:AddMessage("CLite - Combat logging enabled.", 1.0, 0.0, 0.0);
+		DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging enabled.", 1.0, 0.0, 0.0);
 	end
 	zoneChangedUpdate();
 end
