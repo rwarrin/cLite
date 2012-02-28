@@ -20,12 +20,13 @@ local zones =
 local EnableTenManLogging = true;
 --------------------------------------  CONFIG  --------------------------------------
 
+local LoggingStatus = false;
+local DisplayStopMessage = true;
+
 --  When the zone changes check if it is one of the zones listed for logging.
 --  Enable or Disable logging and display a message.
 local function ZoneChangedUpdate()
 	local RaidSize = GetNumRaidMembers();
-    local LoggingStatus = false;
-    local DisplayStopMessage = true;
 	
 	if (EnableTenManLogging == false and RaidSize <= 15) then
 		return;
@@ -46,7 +47,8 @@ local function ZoneChangedUpdate()
 		DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging is running.", 0.9, 0.4, 0.3);
 		LoggingCombat(1);
 		DisplayStopMessage = true;
-	else --  if (LoggingStatus == false) then
+    end
+	if (LoggingStatus == false or enabled == false) then
 		if (DisplayStopMessage == true) then
 			DEFAULT_CHAT_FRAME:AddMessage("CLite: Combat logging is stopped.", 0.9, 0.4, 0.3);
 			DisplayStopMessage = false;
