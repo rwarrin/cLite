@@ -1,4 +1,4 @@
--------------------------------------------------------------------------------
+----------------------------------CONFIGURATION---------------------------------
 -- To enable or disable logging in a zone change the zone key value to either
 -- true or false.
 --
@@ -13,9 +13,7 @@ local zones =
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
 }
-
 local debug = false;
-
 -------------------------------------------------------------------------------
 
 -- Check if logging should happen in new zone
@@ -44,25 +42,23 @@ local function SetLoggingStatus(status)
     end
 end
 
--- Update when zone changes
-local function ZoneChanged()
-    if(enabled == true) then
-        local logging = CanLogInNewZone();
-        SetLoggingStatus(logging);
-    end
+-- Update logging status
+local function UpdateLoggingStatus()
+    local logging = CanLogInNewZone();
+    SetLoggingStatus(logging, oldState);
 end
 
 -- Handle events
 local function OnEvent(self, event, ...)
     if(event == "ZONE_CHANGED_NEW_AREA") then
-        ZoneChanged();
+        UpdateLoggingStatus();
     elseif(event == "ADDON_LOADED") then
         if(enabled == nil) then
             enabled = true;
         end
     elseif(event == "PLAYER_LOGIN") then
         if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: cLite: Player login.", 0.3, 0.3, 0.8); end
-        ZoneChanged();
+        UpdateLoggingStatus();
     end
 end
 
@@ -75,8 +71,7 @@ local function ToggleAutomaticLogging()
         enabled = true;
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging enabled.", 0.2, 0.8, 0.2);
     end
-    local logging = CanLogInNewZone();
-    SetLoggingStatus(logging);
+    UpdateLoggingStatus();
 end
 
 -- Create AddOn frame and register for events
