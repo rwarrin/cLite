@@ -6,27 +6,19 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
-    -- Testing
-    ["Stormwind City"] = true,
-
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
     ["Firelands"] = false,
     ["Baradin Hold"] = false,
 }
-local debug = false;
 -------------------------------------------------------------------------------
 
 -- Check if logging should happen in new zone
 local function CanLogInNewZone()
     local newZone = GetRealZoneText();
-    if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: New zone: " .. newZone .. ".", 0.3, 0.3, 0.8); end
     for key,value in pairs(zones) do
         if(key == newZone and value == true and enabled == true) then
-            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is okay in " .. key .. ".", 0.3, 0.3, 0.8); end
             return true;
-        else
-            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is not okay: " .. newZone .. " != " .. key .. ".", 0.3, 0.3, 0.8); end
         end
     end
     return false;
@@ -60,7 +52,6 @@ local function OnEvent(self, event, ...)
             enabled = true;
         end
     elseif(event == "PLAYER_LOGIN") then
-        if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: cLite: Player login.", 0.3, 0.3, 0.8); end
         UpdateLoggingStatus();
     end
 end
