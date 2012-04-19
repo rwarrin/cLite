@@ -14,18 +14,55 @@ local zones =
     ["Dragon Soul"] = true,
 }
 
+local debug = false;
+
 -------------------------------------------------------------------------------
+
+-- Check if logging should happen in new zone
+local function CanLogInNewZone()
+    local newZone = GetRealZoneText();
+    if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: New zone: " .. newZone .. ".", 0.3, 0.3, 0.8); end
+    for key,value in pairs(zones) do
+        if(key == newZone and value == true and enabled == true) then
+            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is okay here.", 0.3, 0.3, 0.8); end
+            return true;
+        else
+            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is not okay here.", 0.3, 0.3, 0.8); end
+            return false;
+        end
+    end
+end
+
+-- Set the status of combat logging on or off
+local function SetLoggingStatus(status)
+    if(status == true) then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging started.", 0.2, 0.8, 0.2);
+        LoggingCombat(1);
+    else 
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging stopped.", 0.9, 0.3, 0.3);
+        LoggingCombat(0);
+    end
+end
+
+-- Update when zone changes
+local function ZoneChanged()
+    if(enabled == true) then
+        local logging = CanLogInNewZone();
+        SetLoggingStatus(logging);
+    end
+end
 
 -- Handle events
 local function OnEvent(self, event, ...)
     if(event == "ZONE_CHANGED_NEW_AREA") then
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Zone changed.", 0.3, 0.7, 0.3);
+        ZoneChanged();
     elseif(event == "ADDON_LOADED") then
         if(enabled == nil) then
             enabled = true;
         end
     elseif(event == "PLAYER_LOGIN") then
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Player login.", 0.3, 0.7, 0.3);
+        if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: cLite: Player login.", 0.3, 0.3, 0.8); end
+        ZoneChanged();
     end
 end
 
@@ -38,7 +75,8 @@ local function ToggleAutomaticLogging()
         enabled = true;
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging enabled.", 0.3, 0.8, 0.3);
     end
-    -- Update logging status
+    local logging = CanLogInNewZone();
+    SetLoggingStatus(logging);
 end
 
 -- Create AddOn frame and register for events
