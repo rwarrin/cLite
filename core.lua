@@ -29,6 +29,18 @@ local function OnEvent(self, event, ...)
     end
 end
 
+-- Toggle automatic logging
+local function ToggleAutomaticLogging()
+    if(enabled == true) then
+        enabled = false;
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging disabled.", 0.8, 0.3, 0.3);
+    else
+        enabled = true;
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging enabled.", 0.3, 0.8, 0.3);
+    end
+    -- Update logging status
+end
+
 -- Create AddOn frame and register for events
 local cLite = CreateFrame("FRAME", "cLiteFrame", UIParent);
 cLite:RegisterEvent("ADDON_LOADED");
