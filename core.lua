@@ -5,14 +5,14 @@
 -- To add a new zone to the list use the format below:
 -- ["New Zone Name"] = true,
 
-local zones = 
-{
+local zones = {
     -- Testing
     ["Stormwind City"] = true,
 
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
     ["Firelands"] = false,
+    ["Blackwing Descent"] = false,
     ["The Bastion of Twilight"] = false,
     ["Throne of the Four Winds"] = false,
     ["Baradin Hold"] = false,
@@ -26,13 +26,13 @@ local function CanLogInNewZone()
     if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: New zone: " .. newZone .. ".", 0.3, 0.3, 0.8); end
     for key,value in pairs(zones) do
         if(key == newZone and value == true and enabled == true) then
-            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is okay here.", 0.3, 0.3, 0.8); end
+            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is okay in " .. key .. ".", 0.3, 0.3, 0.8); end
             return true;
         else
-            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is not okay here.", 0.3, 0.3, 0.8); end
-            return false;
+            if(debug)then DEFAULT_CHAT_FRAME:AddMessage("cLite [DEBUG]: Logging is not okay: " .. newZone .. " != " .. key .. ".", 0.3, 0.3, 0.8); end
         end
     end
+    return false;
 end
 
 -- Set the status of combat logging on or off
@@ -41,7 +41,9 @@ local function SetLoggingStatus(status)
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging started.", 0.2, 0.8, 0.2);
         LoggingCombat(1);
     else 
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging stopped.", 0.9, 0.2, 0.2);
+        if(LoggingCombat()) then
+            DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging stopped.", 0.9, 0.2, 0.2);
+        end
         LoggingCombat(0);
     end
 end
@@ -49,7 +51,7 @@ end
 -- Update logging status
 local function UpdateLoggingStatus()
     local logging = CanLogInNewZone();
-    SetLoggingStatus(logging, oldState);
+    SetLoggingStatus(logging);
 end
 
 -- Handle events
