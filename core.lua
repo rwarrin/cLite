@@ -16,6 +16,19 @@ local zones =
 
 -------------------------------------------------------------------------------
 
+-- Handle events
+local function OnEvent(self, event, ...)
+    if(event == "ZONE_CHANGED_NEW_AREA") then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Zone changed.", 0.3, 0.7, 0.3);
+    elseif(event == "ADDON_LOADED") then
+        if(enabled == nil) then
+            enabled = true;
+        end
+    elseif(event == "PLAYER_LOGIN") then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Player login.", 0.3, 0.7, 0.3);
+    end
+end
+
 -- Create AddOn frame and register for events
 local cLite = CreateFrame("FRAME", "cLiteFrame", UIParent);
 cLite:RegisterEvent("ADDON_LOADED");
