@@ -39,7 +39,7 @@ local function SetLoggingStatus(status)
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging started.", 0.2, 0.8, 0.2);
         LoggingCombat(1);
     else 
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging stopped.", 0.9, 0.3, 0.3);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat logging stopped.", 0.9, 0.2, 0.2);
         LoggingCombat(0);
     end
 end
@@ -70,10 +70,10 @@ end
 local function ToggleAutomaticLogging()
     if(enabled == true) then
         enabled = false;
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging disabled.", 0.8, 0.3, 0.3);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging disabled.", 0.9, 0.2, 0.2);
     else
         enabled = true;
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging enabled.", 0.3, 0.8, 0.3);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging enabled.", 0.2, 0.8, 0.2);
     end
     local logging = CanLogInNewZone();
     SetLoggingStatus(logging);
