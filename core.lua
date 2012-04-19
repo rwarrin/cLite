@@ -12,6 +12,10 @@ local zones =
 
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
+    ["Firelands"] = false,
+    ["The Bastion of Twilight"] = false,
+    ["Throne of the Four Winds"] = false,
+    ["Baradin Hold"] = false,
 }
 local debug = false;
 -------------------------------------------------------------------------------
