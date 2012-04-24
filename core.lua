@@ -6,9 +6,12 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
+    -- Testing
+    ["Stormwind City"] = true,
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
-    ["Firelands"] = false,
+	["The Dragon Wastes"] = true,
+    ["Firelands"] = true,
     ["Baradin Hold"] = false,
 }
 -------------------------------------------------------------------------------
@@ -45,9 +48,10 @@ end
 
 -- Handle events
 local function OnEvent(self, event, ...)
-    if(event == "ZONE_CHANGED_NEW_AREA" or "PLAYER_LOGIN") then
+    if(event == "ZONE_CHANGED_NEW_AREA" or event == "PLAYER_LOGIN") then
         UpdateLoggingStatus();
-    elseif(event == "ADDON_LOADED") then
+    end
+    if(event == "ADDON_LOADED") then
         if(enabled == nil) then
             enabled = true;
         end
