@@ -6,8 +6,6 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
-    -- Testing
-    ["Stormwind City"] = true,
     -- Cataclysm Raids
     ["Dragon Soul"] = true,
 	["The Dragon Wastes"] = true,
