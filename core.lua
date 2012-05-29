@@ -11,6 +11,7 @@ local zones = {
 	["The Dragon Wastes"] = true,
     ["Firelands"] = true,
     ["Baradin Hold"] = false,
+    ["Stormwind City"] = true,  -- DEBUG
 }
 -------------------------------------------------------------------------------
 
@@ -68,6 +69,37 @@ local function ToggleAutomaticLogging()
     UpdateLoggingStatus();
 end
 
+-- Get the status of combat logging
+local function DisplayLoggingStatus()
+    if(LoggingCombat() == 1) then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is being logged.", 0.2, 0.8, 0.2);
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is not being logged.", 0.9, 0.2, 0.2);
+    end
+end
+
+-- Slash command handler
+local function CLite_CommandHandler(message)
+    local command = message:match("(%S*)");
+    if (command == "" ) then
+        ToggleAutomaticLogging();
+    elseif(command == "status") then
+        DisplayLoggingStatus();
+    elseif (command == "start") then
+        SetLoggingStatus(true);
+    elseif (command == "stop") then
+        SetLoggingStatus(false);
+    elseif(command == "help") then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Slash command help.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Usage /cl [command].", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [empty] - Toggles automatic logging on and off.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [status] - Returns the status of combat logging.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [start] - Forces combat logging on.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [stop] - Forces combat logging off.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [help] - Shows this message.", 0.1, 0.6, 0.8);
+    end
+end
+
 -- Create AddOn frame and register for events
 local cLite = CreateFrame("FRAME", "cLiteFrame", UIParent);
 cLite:RegisterEvent("ADDON_LOADED");
@@ -77,4 +109,4 @@ cLite:SetScript("OnEvent", OnEvent);
 
 -- Slash command for toggling automatic logging
 SLASH_CLITETOGGLE1 = "/cl";
-SlashCmdList["CLITETOGGLE"] = ToggleAutomaticLogging;
+SlashCmdList["CLITETOGGLE"] = CLite_CommandHandler;
