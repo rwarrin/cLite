@@ -11,7 +11,6 @@ local zones = {
 	["The Dragon Wastes"] = true,
     ["Firelands"] = true,
     ["Baradin Hold"] = false,
-    ["Stormwind City"] = true,  -- DEBUG
 }
 -------------------------------------------------------------------------------
 
@@ -69,12 +68,21 @@ local function ToggleAutomaticLogging()
     UpdateLoggingStatus();
 end
 
--- Get the status of combat logging
+-- Display the status of combat logging
 local function DisplayLoggingStatus()
     if(LoggingCombat() == 1) then
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is being logged.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is being logged.", 0.2, 0.8, 0.2);
     else
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is not being logged.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Combat is not being logged.", 0.9, 0.2, 0.2);
+    end
+end
+
+-- Display automatic logging status
+local function DisplayAddOnStatus()
+    if(enabled == true) then
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging is enabled.", 0.2, 0.8, 0.2);
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: Automatic logging is disabled.", 0.9, 0.2, 0.2);
     end
 end
 
@@ -84,12 +92,15 @@ local function CLite_CommandHandler(message)
     if (command == "" ) then
         ToggleAutomaticLogging();
     elseif(command == "status") then
+        DisplayAddOnStatus();
+    elseif(command == "logging") then
         DisplayLoggingStatus();
     elseif(command == "help") then
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Slash command help.", 0.1, 0.6, 0.8);
         DEFAULT_CHAT_FRAME:AddMessage("cLite: Usage /cl [command].", 0.1, 0.6, 0.8);
         DEFAULT_CHAT_FRAME:AddMessage("cLite: [empty] - Toggles automatic logging on and off.", 0.1, 0.6, 0.8);
-        DEFAULT_CHAT_FRAME:AddMessage("cLite: [status] - Returns the status of combat logging.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [status] - Returns the state of automatic logging.", 0.1, 0.6, 0.8);
+        DEFAULT_CHAT_FRAME:AddMessage("cLite: [logging] - Returns the status of combat logging.", 0.1, 0.6, 0.8);
         DEFAULT_CHAT_FRAME:AddMessage("cLite: [help] - Shows this message.", 0.1, 0.6, 0.8);
     end
 end
