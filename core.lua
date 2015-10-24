@@ -6,11 +6,10 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
-    -- Cataclysm Raids
-    ["Dragon Soul"] = true,
-	["The Dragon Wastes"] = true,
-    ["Firelands"] = true,
-    ["Baradin Hold"] = false,
+    -- Dreanor Raids
+    ["Hellfire Citadel"] = true,
+    ["Blackrock Foundry"] = true,
+    ["Highmaul"] = true,
 }
 -------------------------------------------------------------------------------
 
