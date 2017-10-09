@@ -1,4 +1,4 @@
-## Interface: 60200
+## Interface: 70300
 ## Title: CLite
 ## Notes: Combat Logger Lite.  Automatically enables combatlogging.
 ## Author: Synaptk
