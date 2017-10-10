@@ -6,10 +6,12 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
-    -- Dreanor Raids
-    ["Hellfire Citadel"] = true,
-    ["Blackrock Foundry"] = true,
-    ["Highmaul"] = true,
+    -- Legion Raids
+    ["The Emerald Nightmare"] = true,
+    ["Trial of Valor"] = true,
+    ["The Nighthold"] = true,
+    ["Tomb of Sargeras"] = true,
+    ["Antorus, the Burning Throne"] = true
 }
 -------------------------------------------------------------------------------
 
