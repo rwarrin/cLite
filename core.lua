@@ -6,12 +6,11 @@
 -- ["New Zone Name"] = true,
 
 local zones = {
-    -- Legion Raids
-    ["The Emerald Nightmare"] = true,
-    ["Trial of Valor"] = true,
-    ["The Nighthold"] = true,
-    ["Tomb of Sargeras"] = true,
-    ["Antorus, the Burning Throne"] = true
+    -- BfA Raids
+    ["Uldir"] = true,
+    ["Battle of Dazar'alor"] = true,
+    ["Crucible of Storms"] = true,
+    ["The Eternal Palace"] = true,
 }
 -------------------------------------------------------------------------------
 

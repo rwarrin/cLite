@@ -1,8 +1,8 @@
-## Interface: 70300
+## Interface: 80205
 ## Title: CLite
 ## Notes: Combat Logger Lite.  Automatically enables combatlogging.
 ## Author: Synaptk
-## Version: 2.1.0
+## Version: 2.2.0
 ## SavedVariables: enabled
 
 core.lua
