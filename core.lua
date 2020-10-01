@@ -10,7 +10,12 @@ local zones = {
     ["Uldir"] = true,
     ["Battle of Dazar'alor"] = true,
     ["Crucible of Storms"] = true,
-    ["The Eternal Palace"] = true,
+    ["The Eternal Palace"] = true,-- Legacy Raids
+	["Tomb of Sargeras"] = true,
+	["The Nighthold"] = true,
+	["Dragon Soul"] = true,
+	["Antorus"] = true,
+	["Firelands"] = true,
 }
 -------------------------------------------------------------------------------
 
